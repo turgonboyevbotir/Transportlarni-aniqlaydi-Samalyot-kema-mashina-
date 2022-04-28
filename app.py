@@ -1,8 +1,9 @@
 import streamlit as st
 from fastai.vision.all import *
 import pathlib
-temp = pathlib.PosixPath
-pathlib.PosixPath = pathlib.WindowsPath
+import platform
+plt = platform.system()
+if plt == 'Linux': pathlib.WindowsPath = pathlib.PosixPath
 
 st.title('Transport klassifikatsiya qiluvchi app')
 
@@ -21,3 +22,5 @@ if file:
     st.success(f"Bashorat : {pred}")
     st.info(f"Ehtimollik : {probs[pred_id]*100:.1f}%")
 
+    fig = px.bar(x=probs*100, y=model.dls.vocab)
+    st.plotly_chart(fig)
