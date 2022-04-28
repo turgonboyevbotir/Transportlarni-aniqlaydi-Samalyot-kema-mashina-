@@ -1,0 +1,1 @@
+# Transportlarni-aniqlaydi-Samalyot-kema-mashina-
